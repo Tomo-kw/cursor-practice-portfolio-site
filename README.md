@@ -34,3 +34,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Cursor 完全入門 本を使って Web 制作をしてみる
+
+## 1 回目の指示
+
+フロントエンドエンジニアである私のポートフォリオサイトを作成してください。
+構成要素は以下の通りです。
+・自己紹介
+・プロジェクト（中小企業向け案件受注システム、百貨店の通販サイト、大企業向け労務管理システム）
+・お問い合わせフォーム（名前、メールアドレス、メッセージ、送信ボタン）
+
+3 つのプロジェクトは、並べて表示してください。
+デザインに使用するライブラリは chakra ui を使ってください

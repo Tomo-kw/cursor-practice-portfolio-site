@@ -1,103 +1,130 @@
-import Image from "next/image";
+"use client";
+
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  SimpleGrid,
+  Stack,
+  Input,
+  Textarea,
+  Button,
+} from "@chakra-ui/react";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // ここにフォーム送信のロジックを実装
+    alert("お問い合わせを受け付けました。");
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  return (
+    <Container maxW="container.xl" py={10}>
+      {/* 自己紹介セクション */}
+      <Box mb={20}>
+        <Heading as="h1" size="2xl" mb={6}>
+          フロントエンドエンジニア
+        </Heading>
+        <Text fontSize="xl">
+          ユーザー体験を重視した、美しく使いやすいWebアプリケーションの開発を得意としています。
+          React、TypeScript、Next.jsなどのモダンな技術スタックを使用し、
+          パフォーマンスと保守性の高いコードを書くことを心がけています。
+        </Text>
+      </Box>
+
+      {/* プロジェクトセクション */}
+      <Box mb={20}>
+        <Heading as="h2" size="xl" mb={8}>
+          プロジェクト
+        </Heading>
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap={8}>
+          <Box p={6} borderWidth="1px" borderRadius="lg">
+            <Heading as="h3" size="md" mb={4}>
+              中小企業向け案件受注システム
+            </Heading>
+            <Text>
+              中小企業の案件管理を効率化するWebアプリケーション。
+              案件の進捗管理、顧客管理、請求書管理などの機能を実装。
+            </Text>
+          </Box>
+          <Box p={6} borderWidth="1px" borderRadius="lg">
+            <Heading as="h3" size="md" mb={4}>
+              百貨店の通販サイト
+            </Heading>
+            <Text>
+              高級感のあるデザインと使いやすさを両立したECサイト。
+              商品検索、カート機能、決済システムなどを実装。
+            </Text>
+          </Box>
+          <Box p={6} borderWidth="1px" borderRadius="lg">
+            <Heading as="h3" size="md" mb={4}>
+              大企業向け労務管理システム
+            </Heading>
+            <Text>
+              従業員の勤怠管理、給与計算、休暇申請などを統合的に管理するシステム。
+              セキュリティと使いやすさを重視した設計。
+            </Text>
+          </Box>
+        </SimpleGrid>
+      </Box>
+
+      {/* お問い合わせフォーム */}
+      <Box>
+        <Heading as="h2" size="xl" mb={8}>
+          お問い合わせ
+        </Heading>
+        <form onSubmit={handleSubmit}>
+          <Stack spacing={4}>
+            <Box>
+              <Text mb={2}>お名前</Text>
+              <Input
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                placeholder="山田 太郎"
+                required
+              />
+            </Box>
+            <Box>
+              <Text mb={2}>メールアドレス</Text>
+              <Input
+                type="email"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                placeholder="example@email.com"
+                required
+              />
+            </Box>
+            <Box>
+              <Text mb={2}>メッセージ</Text>
+              <Textarea
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                placeholder="お問い合わせ内容を入力してください"
+                rows={6}
+                required
+              />
+            </Box>
+            <Button type="submit" colorScheme="blue" size="lg">
+              送信する
+            </Button>
+          </Stack>
+        </form>
+      </Box>
+    </Container>
   );
 }
